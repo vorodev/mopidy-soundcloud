@@ -42,4 +42,5 @@ setup(
         'Programming Language :: Python :: 2',
         'Topic :: Multimedia :: Sound/Audio :: Players',
     ],
+    test_suite='nose.collector'
 )
