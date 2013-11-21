@@ -87,9 +87,12 @@ class SoundCloudPlaylistsProvider(base.BasePlaylistsProvider):
             )
             self._playlists.append(scset)
 
-        for cat in self.config['soundcloud']['explore']:
-            exp = self.create_explore_playlist(cat.replace('/', ';'))
-            self._playlists.append(exp)
+        explorelists = self.config['soundcloud']['explore']
+        if explorelists[0] != '0':
+            for cat in explorelists:
+                exp = self.create_explore_playlist(cat.replace('/', ';'))
+                self._playlists.append(exp)
+
         logger.info('Loaded %d SoundCloud playlist(s)', len(self._playlists))
         listener.BackendListener.send('playlists_loaded')
 
